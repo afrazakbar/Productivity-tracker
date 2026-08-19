@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Focus</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <!-- Sidebar -->
+
+     <aside class="sidebar">
+    <div class="brand">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        
+
+    <div>
+        <h1>Focus Focus</h1>
+        <span>Productivity OS</span>
+    </div>
+    </div>
+
+    <nav>
+        <button class="nav-item active" data-page="dashboard">
+        <span>📊</span>
+          Dashboard
+        </button>
+        <button class="nav-item" data-page="tasks">
+        <span>📝</span>
+          Tasks
+        </button>
+        <button class="nav-item" data-page="focus">
+        <span>⏱️</span>
+          Focus
+        </button>
+        <button class="nav-item" data-page="analytics">
+        <span>📈</span>
+          Analytics
+        </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <button id="themeButton" class="nav-item">
+            <span>🌙</span>
+            Toggle Theme
+        </button>
+
+    </div>
+
+     </aside>
+
+     <!-- Main -->
+      <main class="main">
+
+<header class="topbar">
+
+            <div>
+                <p class="eyebrow">YOUR WORKSPACE</p>
+                <h2 id="pageTitle">Dashboard</h2>
+            </div>
+
+            <div class="header-actions">
+
+                <button id="quickAddButton" class="primary-button">
+                    + New Task
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboardPage" class="page active-page">
+
+            <div class="welcome">
+
+                <div>
+                    <p class="eyebrow">GOOD DAY 👋</p>
+
+                    <h2>
+                        Let's get things done.
+                    </h2>
+
+                    <p id="currentDate"></p>
+                </div>
+
+                <div class="streak-box">
+
+                    <span>🔥</span>
+
+                    <div>
+                        <strong id="streakCount">0</strong>
+                        <small>day streak</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">✓</div>
+
+                    <div>
+                        <span>Completed</span>
+                        <strong id="completedCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">📋</div>
+
+                    <div>
+                        <span>Total Tasks</span>
+                        <strong id="totalCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">⏱</div>
+
+                    <div>
+                        <span>Focus Minutes</span>
+                        <strong id="focusMinutes">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stat card">
+                <div> class="stat-icon green">🎯</div>
+
+            <div>
+                <span>Daily Progress</span>
+                <strong id="progressPercent">0%</strong>
+            </div>
+            
+         </div>
+         
+    </div>  
+
+     <!-- PROGRESS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Today's Progress</h3>
+                        <p>Keep pushing forward.</p>
+                    </div>
+
+                    <strong id="progressText">0 / 0</strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div id="progressBar"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TODAY TASKS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Today's Tasks</h3>
+                        <p>Your current priorities.</p>
+                    </div>
+
+                    <button
+                        class="text-button"
+                        data-page-link="tasks"
+                    >
+                        View all →
+                    </button>
+
+                </div>
+
+                <div id="todayTasks"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TASKS PAGE -->
+
+        <section id="tasksPage" class="page">
+
+            <div class="toolbar">
+
+                <input
+                    id="searchInput"
+                    class="search"
+                    type="search"
+                    placeholder="🔎 Search tasks..."
+                >
+
+
+                <select id="filterPriority">
+
+                    <option value="all">
+                        All priorities
+                    </option>
+
+                    <option value="high">
+                        High
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="low">
+                        Low
+                    </option>
+
+                </select>
+
+
+                <select id="filterCategory">
+
+                    <option value="all">
+                        All categories
+                    </option>
+
+                    <option value="study">
+                        Study
+                    </option>
+
+                    <option value="work">
+                        Work
+                    </option>
+
+                    <option value="Project">
+                        Project
+                    </option>
+                </select>
+             </div>
+    
+
+   <div class="kanban">
+     <div class="kanban-column">
+        <div c;ass="column-title">
+            <span>To Do</span>
+            <span id="todoCount">0</span>
+        </div>
+   </div>
+   
+ <div id="todoTasks"></div>
+
+                </div>
+
+
+                <div class="kanban-column">
+
+                    <div class="column-title">
+                        <span>IN PROGRESS</span>
+                        <b id="progressCount">0</b>
+                    </div>
+
+                    <div id="progressTasks"></div>
+
+                </div>
+
+
+                <div class="kanban-column">
+
+                    <div class="column-title">
+                        <span>COMPLETED</span>
+                        <b id="doneCount">0</b>
+                    </div>
+
+                    <div id="doneTasks"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOCUS PAGE -->
+
+        <section id="focusPage" class="page">
+
+            <div class="focus-container">
+
+                <p class="eyebrow">FOCUS SESSION</p>
+
+                <h2>Deep Work</h2>
+
+                <div id="timer" class="timer">
+                    25:00
+                </div>
+
+
+                <div class="timer-mode">
+
+                    <button
+                        class="mode active"
+                        data-minutes="25"
+                    >
+                        Focus
+                    </button>
+
+                    <button
+                        class="mode"
+                        data-minutes="5"
+                    >
+                        Short Break
+                    </button>
+
+                    <button
+                        class="mode"
+                        data-minutes="15"
+                    >
+                        Long Break
+                    </button>
+
+                </div>
+
+
+                <div class="timer-controls">
+
+                    <button
+                        id="startTimer"
+                        class="primary-button"
+                    >
+                        Start Focus
+                    </button>
+
+                    <button
+                        id="resetTimer"
+                        class="secondary-button"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+
+                <p class="focus-info">
+                    Completed focus sessions today:
+                    <strong id="sessionCount">0</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ANALYTICS -->
+
+        <section id="analyticsPage" class="page">
+
+            <div class="analytics-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Productivity Overview</h3>
+                            <p>Your recent activity.</p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="weeklyChart"
+                        class="chart"
+                    ></div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>Task Breakdown</h3>
+
+                    <div class="breakdown">
+
+                        <div>
+                            <span>High Priority</span>
+                            <strong id="highTasks">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Medium Priority</span>
+                            <strong id="mediumTasks">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Low Priority</span>
+                            <strong id="lowTasks">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ADD TASK MODAL -->
+
+    <div id="modal" class="modal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <div>
+                    <p class="eyebrow">TASK CREATOR</p>
+                    <h2>New Task</h2>
+                </div>
+
+                <button id="closeModal" class="close-button">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <label>
+                    Task name
+
+                    <input
+                        id="taskName"
+                        type="text"
+                        placeholder="What needs to be done?"
+                        required
+                    >
+
+                </label>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Priority
+
+                        <select id="taskPriority">
+
+                            <option value="high">
+                                High
+                            </option>
+
+                            <option
+                                value="medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label>
+                        Category
+
+                        <select id="taskCategory">
+
+                            <option value="study">
+                                Study
+                            </option>
+
+                            <option value="work">
+                                Work
+                            </option>
+
+                            <option value="personal">
+                                Personal
+                            </option>
+
+                            <option value="project">
+                                Project
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <label>
+                    Due date
+
+                    <input
+                        id="taskDate"
+                        type="date"
+                        required
+                    >
+
+                </label>
+
+
+                <button
+                    class="primary-button full"
+                    type="submit"
+                >
+                    Create Task
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
