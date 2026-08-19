@@ -25,8 +25,17 @@
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
+
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -44,8 +53,8 @@ body {
     color: var(--text);
 
     transition:
-        background 0.2s,
-        color 0.2s;
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 button,
@@ -81,14 +90,17 @@ button {
     display: flex;
     flex-direction: column;
 
-    overflow-y: auto;
+    z-index: 50;
 }
 
 
-/* BRAND */
+/* =========================
+   BRAND / LOGO
+========================= */
 
 .brand {
     display: flex;
+
     align-items: center;
 
     gap: 12px;
@@ -96,19 +108,32 @@ button {
     padding: 0 10px 30px;
 }
 
-.brand-icon {
+.logo {
     width: 42px;
     height: 42px;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
 
     border-radius: 12px;
+}
 
-    background: var(--primary);
-    color: white;
+.logo img {
+    width: 42px;
+    height: 42px;
 
-    font-size: 20px;
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    display: block;
 }
 
 .brand h1 {
@@ -124,10 +149,13 @@ button {
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     display: flex;
+
     flex-direction: column;
 
     gap: 5px;
@@ -149,13 +177,14 @@ nav {
     text-align: left;
 
     display: flex;
+
     align-items: center;
 
     gap: 12px;
 
     transition:
-        background 0.15s,
-        color 0.15s;
+        background 0.15s ease,
+        color 0.15s ease;
 }
 
 .nav-item:hover {
@@ -173,19 +202,16 @@ nav {
 }
 
 
-/* THEME BUTTON
-   Always directly below Analytics */
+/* =========================
+   THEME BUTTON
+========================= */
 
 .sidebar-bottom {
-    margin-top: 0;
+    margin-top: 15px;
 
-    padding-top: 5px;
+    padding-top: 15px;
 
     border-top: 1px solid var(--border);
-}
-
-.sidebar-bottom .nav-item {
-    margin-top: 5px;
 }
 
 
@@ -200,6 +226,11 @@ nav {
 
     max-width: 1500px;
 }
+
+
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar {
     display: flex;
@@ -242,6 +273,10 @@ nav {
     padding: 12px 18px;
 
     font-weight: 700;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
 }
 
 .primary-button {
@@ -252,12 +287,18 @@ nav {
 
 .primary-button:hover {
     background: var(--primary-dark);
+
+    transform: translateY(-1px);
 }
 
 .secondary-button {
     background: var(--surface2);
 
     color: var(--text);
+}
+
+.secondary-button:hover {
+    background: var(--border);
 }
 
 .text-button {
@@ -333,6 +374,11 @@ nav {
     color: var(--muted);
 }
 
+
+/* =========================
+   STREAK
+========================= */
+
 .streak-box {
     display: flex;
 
@@ -369,8 +415,7 @@ nav {
 .stats-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 15px;
 
@@ -416,6 +461,8 @@ nav {
     place-items: center;
 
     border-radius: 12px;
+
+    flex-shrink: 0;
 }
 
 .blue {
@@ -500,7 +547,7 @@ nav {
 
     border-radius: inherit;
 
-    transition: width 0.3s;
+    transition: width 0.3s ease;
 }
 
 
@@ -573,6 +620,11 @@ nav {
     margin-top: 3px;
 }
 
+
+/* =========================
+   PRIORITY
+========================= */
+
 .priority {
     font-size: 10px;
 
@@ -634,6 +686,15 @@ form label select {
     border-radius: 9px;
 
     outline: none;
+
+    transition: border 0.15s ease;
+}
+
+.search:focus,
+.toolbar select:focus,
+form label input:focus,
+form label select:focus {
+    border-color: var(--primary);
 }
 
 .search {
@@ -648,8 +709,7 @@ form label select {
 .kanban {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 15px;
 }
@@ -668,6 +728,8 @@ form label select {
     display: flex;
 
     justify-content: space-between;
+
+    align-items: center;
 
     margin-bottom: 15px;
 
@@ -874,8 +936,7 @@ form label select {
 
     padding: 25px;
 
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
 }
 
 .modal-header {
@@ -891,6 +952,11 @@ form label select {
 .modal-header h2 {
     margin: 0;
 }
+
+
+/* =========================
+   FORMS
+========================= */
 
 form label {
     display: block;
@@ -912,15 +978,14 @@ form label select {
 .form-row {
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 10px;
 }
 
 
 /* =========================
-   MOBILE
+   MOBILE / TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -931,60 +996,52 @@ form label select {
         padding: 15px 8px;
     }
 
-    /* Hide brand text */
+    .brand {
+        justify-content: center;
 
-    .brand > div:not(.brand-icon) {
+        padding: 0 0 20px;
+    }
+
+    .brand > div:not(.logo) {
         display: none;
     }
 
-    .brand {
-        justify-content: center;
+    .logo {
+        width: 42px;
+        height: 42px;
     }
 
-    .brand-icon {
-        font-size: 20px;
+    .logo img {
+        width: 42px;
+        height: 42px;
     }
-
-
-    /* Keep buttons alive */
 
     .nav-item {
         justify-content: center;
 
-        padding: 12px;
+        padding: 12px 8px;
     }
 
-    /* Hide button text */
-
-    .nav-item span:not(:first-child) {
-        display: none;
+    .nav-item {
+        font-size: 0;
     }
 
     .nav-item span:first-child {
         font-size: 18px;
     }
 
-
-    /* Theme button */
-
     .sidebar-bottom {
-        margin-top: 0;
+        margin-top: 15px;
 
-        padding-top: 5px;
+        padding-top: 15px;
     }
-
-    .sidebar-bottom .nav-item {
-        justify-content: center;
-    }
-
 
     .main {
         margin-left: 70px;
     }
 
     .stats-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .kanban {
@@ -997,10 +1054,24 @@ form label select {
 }
 
 
+/* =========================
+   SMALL MOBILE
+========================= */
+
 @media (max-width: 600px) {
 
     .main {
         padding: 15px;
+    }
+
+    .topbar {
+        gap: 15px;
+
+        align-items: flex-start;
+    }
+
+    .topbar h2 {
+        font-size: 23px;
     }
 
     .stats-grid {
@@ -1033,5 +1104,13 @@ form label select {
 
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .timer-mode {
+        flex-wrap: wrap;
+    }
+
+    .timer-controls {
+        flex-wrap: wrap;
     }
 }

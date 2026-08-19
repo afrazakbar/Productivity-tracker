@@ -539,7 +539,7 @@ function renderDashboard() {
         container.innerHTML = `
             <p class="task-meta">
                 No tasks for today. Enjoy the
-                suspiciously empty schedule. 💀
+                empty schedule. 
             </p>
         `;
 
