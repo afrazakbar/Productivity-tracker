@@ -1,4 +1,4 @@
-### Focus Focus
+# Focus Focus
 
 Focus Focus is a productivity suite with:
 
