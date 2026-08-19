@@ -25,11 +25,9 @@
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-
 * {
     box-sizing: border-box;
 }
-
 
 body {
     margin: 0;
@@ -50,20 +48,20 @@ body {
         color 0.2s;
 }
 
-
 button,
 input,
 select {
     font: inherit;
 }
 
-
 button {
     cursor: pointer;
 }
 
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar {
     position: fixed;
@@ -82,8 +80,12 @@ button {
 
     display: flex;
     flex-direction: column;
+
+    overflow-y: auto;
 }
 
+
+/* BRAND */
 
 .brand {
     display: flex;
@@ -93,7 +95,6 @@ button {
 
     padding: 0 10px 30px;
 }
-
 
 .brand-icon {
     width: 42px;
@@ -110,19 +111,20 @@ button {
     font-size: 20px;
 }
 
-
 .brand h1 {
     margin: 0;
 
     font-size: 17px;
 }
 
-
 .brand span {
     color: var(--muted);
+
     font-size: 11px;
 }
 
+
+/* NAVIGATION */
 
 nav {
     display: flex;
@@ -131,8 +133,9 @@ nav {
     gap: 5px;
 }
 
-
 .nav-item {
+    width: 100%;
+
     border: none;
 
     background: transparent;
@@ -149,28 +152,46 @@ nav {
     align-items: center;
 
     gap: 12px;
-}
 
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
 
 .nav-item:hover {
     background: var(--surface2);
+
     color: var(--text);
 }
 
-
 .nav-item.active {
     background: rgba(99, 91, 255, 0.12);
+
     color: var(--primary);
+
     font-weight: 700;
 }
 
 
+/* THEME BUTTON
+   Always directly below Analytics */
+
 .sidebar-bottom {
-    margin-top: auto;
+    margin-top: 0;
+
+    padding-top: 5px;
+
+    border-top: 1px solid var(--border);
+}
+
+.sidebar-bottom .nav-item {
+    margin-top: 5px;
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .main {
     margin-left: 245px;
@@ -179,7 +200,6 @@ nav {
 
     max-width: 1500px;
 }
-
 
 .topbar {
     display: flex;
@@ -190,13 +210,11 @@ nav {
     margin-bottom: 30px;
 }
 
-
 .topbar h2 {
     margin: 0;
 
     font-size: 28px;
 }
-
 
 .eyebrow {
     margin: 0 0 5px;
@@ -211,7 +229,9 @@ nav {
 }
 
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 
 .primary-button,
 .secondary-button {
@@ -224,23 +244,21 @@ nav {
     font-weight: 700;
 }
 
-
 .primary-button {
     background: var(--primary);
+
     color: white;
 }
-
 
 .primary-button:hover {
     background: var(--primary-dark);
 }
 
-
 .secondary-button {
     background: var(--surface2);
+
     color: var(--text);
 }
-
 
 .text-button {
     border: none;
@@ -252,7 +270,6 @@ nav {
     font-weight: 700;
 }
 
-
 .close-button {
     border: none;
 
@@ -263,25 +280,27 @@ nav {
     font-size: 25px;
 }
 
-
 .full {
     width: 100%;
 }
 
 
-/* PAGES */
+/* =========================
+   PAGES
+========================= */
 
 .page {
     display: none;
 }
-
 
 .active-page {
     display: block;
 }
 
 
-/* WELCOME */
+/* =========================
+   WELCOME
+========================= */
 
 .welcome {
     background: var(--surface);
@@ -302,20 +321,17 @@ nav {
     margin-bottom: 20px;
 }
 
-
 .welcome h2 {
     margin: 0 0 5px;
 
     font-size: 25px;
 }
 
-
 .welcome p {
     margin: 0;
 
     color: var(--muted);
 }
-
 
 .streak-box {
     display: flex;
@@ -331,11 +347,9 @@ nav {
     border-radius: 12px;
 }
 
-
 .streak-box span {
     font-size: 25px;
 }
-
 
 .streak-box strong {
     display: block;
@@ -343,13 +357,14 @@ nav {
     font-size: 20px;
 }
 
-
 .streak-box small {
     color: var(--muted);
 }
 
 
-/* STATS */
+/* =========================
+   STATS
+========================= */
 
 .stats-grid {
     display: grid;
@@ -361,7 +376,6 @@ nav {
 
     margin-bottom: 20px;
 }
-
 
 .stat-card {
     background: var(--surface);
@@ -381,7 +395,6 @@ nav {
     box-shadow: var(--shadow);
 }
 
-
 .stat-card span {
     display: block;
 
@@ -390,11 +403,9 @@ nav {
     font-size: 13px;
 }
 
-
 .stat-card strong {
     font-size: 25px;
 }
-
 
 .stat-icon {
     width: 45px;
@@ -406,7 +417,6 @@ nav {
 
     border-radius: 12px;
 }
-
 
 .blue {
     background: #e8edff;
@@ -425,7 +435,9 @@ nav {
 }
 
 
-/* PANELS */
+/* =========================
+   PANELS
+========================= */
 
 .panel {
     background: var(--surface);
@@ -441,7 +453,6 @@ nav {
     box-shadow: var(--shadow);
 }
 
-
 .panel-header {
     display: flex;
 
@@ -452,12 +463,10 @@ nav {
     margin-bottom: 18px;
 }
 
-
 .panel-header h3,
 .panel > h3 {
     margin: 0 0 5px;
 }
-
 
 .panel-header p {
     margin: 0;
@@ -468,7 +477,9 @@ nav {
 }
 
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 
 .progress-bar {
     height: 10px;
@@ -479,7 +490,6 @@ nav {
 
     overflow: hidden;
 }
-
 
 .progress-bar div {
     height: 100%;
@@ -494,7 +504,9 @@ nav {
 }
 
 
-/* TASK LIST */
+/* =========================
+   TASK LIST
+========================= */
 
 .task-item {
     display: flex;
@@ -512,7 +524,6 @@ nav {
     margin-bottom: 8px;
 }
 
-
 .task-left {
     display: flex;
 
@@ -520,7 +531,6 @@ nav {
 
     gap: 12px;
 }
-
 
 .task-check {
     width: 22px;
@@ -539,25 +549,21 @@ nav {
     place-items: center;
 }
 
-
 .task-check.done {
     background: var(--green);
 
     border-color: var(--green);
 }
 
-
 .task-name {
     font-weight: 650;
 }
-
 
 .task-done {
     text-decoration: line-through;
 
     color: var(--muted);
 }
-
 
 .task-meta {
     color: var(--muted);
@@ -566,7 +572,6 @@ nav {
 
     margin-top: 3px;
 }
-
 
 .priority {
     font-size: 10px;
@@ -580,26 +585,28 @@ nav {
     border-radius: 5px;
 }
 
-
 .priority.high {
     background: #ffe1e2;
+
     color: var(--red);
 }
 
-
 .priority.medium {
     background: #fff1d4;
+
     color: #b76b00;
 }
 
-
 .priority.low {
     background: #e1f5eb;
+
     color: var(--green);
 }
 
 
-/* TOOLBAR */
+/* =========================
+   TOOLBAR
+========================= */
 
 .toolbar {
     display: flex;
@@ -608,7 +615,6 @@ nav {
 
     margin-bottom: 20px;
 }
-
 
 .search,
 .toolbar select,
@@ -630,13 +636,14 @@ form label select {
     outline: none;
 }
 
-
 .search {
     max-width: 400px;
 }
 
 
-/* KANBAN */
+/* =========================
+   KANBAN
+========================= */
 
 .kanban {
     display: grid;
@@ -647,7 +654,6 @@ form label select {
     gap: 15px;
 }
 
-
 .kanban-column {
     background: var(--surface2);
 
@@ -657,7 +663,6 @@ form label select {
 
     min-height: 400px;
 }
-
 
 .column-title {
     display: flex;
@@ -673,7 +678,6 @@ form label select {
     letter-spacing: 0.8px;
 }
 
-
 .column-title b {
     background: var(--surface);
 
@@ -685,7 +689,9 @@ form label select {
 }
 
 
-/* FOCUS */
+/* =========================
+   FOCUS
+========================= */
 
 .focus-container {
     background: var(--surface);
@@ -705,11 +711,9 @@ form label select {
     box-shadow: var(--shadow);
 }
 
-
 .focus-container h2 {
     margin-top: 0;
 }
-
 
 .timer {
     font-size: 90px;
@@ -721,7 +725,6 @@ form label select {
     margin: 25px 0;
 }
 
-
 .timer-mode {
     display: flex;
 
@@ -731,7 +734,6 @@ form label select {
 
     margin-bottom: 20px;
 }
-
 
 .mode {
     border: none;
@@ -745,13 +747,11 @@ form label select {
     border-radius: 8px;
 }
 
-
 .mode.active {
     background: var(--primary);
 
     color: white;
 }
-
 
 .timer-controls {
     display: flex;
@@ -761,7 +761,6 @@ form label select {
     gap: 10px;
 }
 
-
 .focus-info {
     margin-top: 25px;
 
@@ -769,7 +768,9 @@ form label select {
 }
 
 
-/* ANALYTICS */
+/* =========================
+   ANALYTICS
+========================= */
 
 .analytics-grid {
     display: grid;
@@ -778,7 +779,6 @@ form label select {
 
     gap: 20px;
 }
-
 
 .chart {
     height: 220px;
@@ -794,7 +794,6 @@ form label select {
     padding-top: 20px;
 }
 
-
 .chart-bar {
     width: 100%;
 
@@ -808,7 +807,6 @@ form label select {
 
     min-height: 5px;
 }
-
 
 .chart-bar span {
     position: absolute;
@@ -824,7 +822,6 @@ form label select {
     color: var(--muted);
 }
 
-
 .breakdown > div {
     display: flex;
 
@@ -835,13 +832,14 @@ form label select {
     border-bottom: 1px solid var(--border);
 }
 
-
 .breakdown span {
     color: var(--muted);
 }
 
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -861,11 +859,9 @@ form label select {
     z-index: 100;
 }
 
-
 .modal.show {
     display: flex;
 }
-
 
 .modal-box {
     background: var(--surface);
@@ -878,9 +874,9 @@ form label select {
 
     padding: 25px;
 
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
 }
-
 
 .modal-header {
     display: flex;
@@ -892,11 +888,9 @@ form label select {
     margin-bottom: 25px;
 }
 
-
 .modal-header h2 {
     margin: 0;
 }
-
 
 form label {
     display: block;
@@ -908,7 +902,6 @@ form label {
     margin-bottom: 15px;
 }
 
-
 form label input,
 form label select {
     display: block;
@@ -916,17 +909,19 @@ form label select {
     margin-top: 7px;
 }
 
-
 .form-row {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 10px;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 900px) {
 
@@ -936,26 +931,50 @@ form label select {
         padding: 15px 8px;
     }
 
+    /* Hide brand text */
 
-    .brand div:not(.brand-icon),
-    .nav-item span:not(:first-child),
-    .nav-item {
-        font-size: 0;
+    .brand > div:not(.brand-icon) {
+        display: none;
     }
-
 
     .brand {
         justify-content: center;
     }
-
 
     .brand-icon {
         font-size: 20px;
     }
 
 
+    /* Keep buttons alive */
+
+    .nav-item {
+        justify-content: center;
+
+        padding: 12px;
+    }
+
+    /* Hide button text */
+
+    .nav-item span:not(:first-child) {
+        display: none;
+    }
+
     .nav-item span:first-child {
         font-size: 18px;
+    }
+
+
+    /* Theme button */
+
+    .sidebar-bottom {
+        margin-top: 0;
+
+        padding-top: 5px;
+    }
+
+    .sidebar-bottom .nav-item {
+        justify-content: center;
     }
 
 
@@ -963,22 +982,18 @@ form label select {
         margin-left: 70px;
     }
 
-
     .stats-grid {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
-
     .kanban {
         grid-template-columns: 1fr;
     }
 
-
     .analytics-grid {
         grid-template-columns: 1fr;
     }
-
 }
 
 
@@ -988,11 +1003,9 @@ form label select {
         padding: 15px;
     }
 
-
     .stats-grid {
         grid-template-columns: 1fr;
     }
-
 
     .welcome {
         flex-direction: column;
@@ -1002,29 +1015,23 @@ form label select {
         gap: 20px;
     }
 
-
     .toolbar {
         flex-direction: column;
     }
-
 
     .search {
         max-width: none;
     }
 
-
     .timer {
         font-size: 65px;
     }
-
 
     .focus-container {
         padding: 30px 15px;
     }
 
-
     .form-row {
         grid-template-columns: 1fr;
     }
-
 }

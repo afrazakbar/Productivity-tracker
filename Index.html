@@ -1,62 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Focus Focus</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-     <!-- Sidebar -->
 
-     <aside class="sidebar">
-    <div class="brand">
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-        
+    <!-- SIDEBAR -->
 
-    <div>
-        <h1>Focus Focus</h1>
-        <span>Productivity OS</span>
-    </div>
-    </div>
+    <aside class="sidebar">
 
-    <nav>
-        <button class="nav-item active" data-page="dashboard">
-        <span>📊</span>
-          Dashboard
-        </button>
-        <button class="nav-item" data-page="tasks">
-        <span>📝</span>
-          Tasks
-        </button>
-        <button class="nav-item" data-page="focus">
-        <span>⏱️</span>
-          Focus
-        </button>
-        <button class="nav-item" data-page="analytics">
-        <span>📈</span>
-          Analytics
-        </button>
-    </nav>
+        <div class="brand">
 
-    <div class="sidebar-bottom">
-        <button id="themeButton" class="nav-item">
-            <span>🌙</span>
-            Toggle Theme
-        </button>
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo">
+            </div>
 
-    </div>
+            <div>
+                <h1>Focus Focus</h1>
+                <span>Productivity OS</span>
+            </div>
 
-     </aside>
+        </div>
 
-     <!-- Main -->
-      <main class="main">
 
-<header class="topbar">
+        <nav>
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>📊</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-page="tasks">
+                <span>📝</span>
+                Tasks
+            </button>
+
+            <button class="nav-item" data-page="focus">
+                <span>⏱️</span>
+                Focus
+            </button>
+
+            <button class="nav-item" data-page="analytics">
+                <span>📈</span>
+                Analytics
+            </button>
+
+        </nav>
+
+
+        <!-- THEME BUTTON -->
+
+        <div class="sidebar-bottom">
+
+            <button id="themeButton" class="nav-item">
+                <span>🌙</span>
+                Toggle Theme
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
 
             <div>
                 <p class="eyebrow">YOUR WORKSPACE</p>
@@ -74,47 +95,76 @@
         </header>
 
 
+
+        <!-- ========================= -->
         <!-- DASHBOARD -->
+        <!-- ========================= -->
 
         <section id="dashboardPage" class="page active-page">
+
+
+            <!-- WELCOME -->
 
             <div class="welcome">
 
                 <div>
-                    <p class="eyebrow">GOOD DAY 👋</p>
+
+                    <p class="eyebrow">
+                        GOOD DAY 👋
+                    </p>
 
                     <h2>
                         Let's get things done.
                     </h2>
 
                     <p id="currentDate"></p>
+
                 </div>
+
 
                 <div class="streak-box">
 
                     <span>🔥</span>
 
                     <div>
-                        <strong id="streakCount">0</strong>
-                        <small>day streak</small>
+
+                        <strong id="streakCount">
+                            0
+                        </strong>
+
+                        <small>
+                            day streak
+                        </small>
+
                     </div>
 
                 </div>
 
             </div>
+
 
 
             <!-- STATS -->
 
             <div class="stats-grid">
 
+
                 <div class="stat-card">
 
-                    <div class="stat-icon blue">✓</div>
+                    <div class="stat-icon blue">
+                        ✓
+                    </div>
 
                     <div>
-                        <span>Completed</span>
-                        <strong id="completedCount">0</strong>
+
+                        <span>
+                            Completed
+                        </span>
+
+                        <strong id="completedCount">
+                            0
+                        </strong>
+
                     </div>
 
                 </div>
@@ -122,11 +172,20 @@
 
                 <div class="stat-card">
 
-                    <div class="stat-icon purple">📋</div>
+                    <div class="stat-icon purple">
+                        📋
+                    </div>
 
                     <div>
-                        <span>Total Tasks</span>
-                        <strong id="totalCount">0</strong>
+
+                        <span>
+                            Total Tasks
+                        </span>
+
+                        <strong id="totalCount">
+                            0
+                        </strong>
+
                     </div>
 
                 </div>
@@ -134,41 +193,70 @@
 
                 <div class="stat-card">
 
-                    <div class="stat-icon orange">⏱</div>
+                    <div class="stat-icon orange">
+                        ⏱
+                    </div>
 
                     <div>
-                        <span>Focus Minutes</span>
-                        <strong id="focusMinutes">0</strong>
+
+                        <span>
+                            Focus Minutes
+                        </span>
+
+                        <strong id="focusMinutes">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🎯
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Daily Progress
+                        </span>
+
+                        <strong id="progressPercent">
+                            0%
+                        </strong>
+
                     </div>
 
                 </div>
 
             </div>
 
-            <div class="stat card">
-                <div> class="stat-icon green">🎯</div>
 
-            <div>
-                <span>Daily Progress</span>
-                <strong id="progressPercent">0%</strong>
-            </div>
-            
-         </div>
-         
-    </div>  
 
-     <!-- PROGRESS -->
+            <!-- PROGRESS -->
 
             <div class="panel">
 
                 <div class="panel-header">
 
                     <div>
-                        <h3>Today's Progress</h3>
-                        <p>Keep pushing forward.</p>
+
+                        <h3>
+                            Today's Progress
+                        </h3>
+
+                        <p>
+                            Keep pushing forward.
+                        </p>
+
                     </div>
 
-                    <strong id="progressText">0 / 0</strong>
+                    <strong id="progressText">
+                        0 / 0
+                    </strong>
 
                 </div>
 
@@ -182,16 +270,25 @@
             </div>
 
 
-            <!-- TODAY TASKS -->
+
+            <!-- TODAY'S TASKS -->
 
             <div class="panel">
 
                 <div class="panel-header">
 
                     <div>
-                        <h3>Today's Tasks</h3>
-                        <p>Your current priorities.</p>
+
+                        <h3>
+                            Today's Tasks
+                        </h3>
+
+                        <p>
+                            Your current priorities.
+                        </p>
+
                     </div>
+
 
                     <button
                         class="text-button"
@@ -202,6 +299,7 @@
 
                 </div>
 
+
                 <div id="todayTasks"></div>
 
             </div>
@@ -209,9 +307,15 @@
         </section>
 
 
-        <!-- TASKS PAGE -->
+
+        <!-- ========================= -->
+        <!-- TASKS -->
+        <!-- ========================= -->
 
         <section id="tasksPage" class="page">
+
+
+            <!-- TOOLBAR -->
 
             <div class="toolbar">
 
@@ -258,31 +362,57 @@
                         Work
                     </option>
 
-                    <option value="Project">
+                    <option value="project">
                         Project
                     </option>
+
                 </select>
-             </div>
-    
 
-   <div class="kanban">
-     <div class="kanban-column">
-        <div c;ass="column-title">
-            <span>To Do</span>
-            <span id="todoCount">0</span>
-        </div>
-   </div>
-   
- <div id="todoTasks"></div>
+            </div>
 
-                </div>
 
+
+            <!-- KANBAN -->
+
+            <div class="kanban">
+
+
+                <!-- TODO -->
 
                 <div class="kanban-column">
 
                     <div class="column-title">
-                        <span>IN PROGRESS</span>
-                        <b id="progressCount">0</b>
+
+                        <span>
+                            TO DO
+                        </span>
+
+                        <b id="todoCount">
+                            0
+                        </b>
+
+                    </div>
+
+                    <div id="todoTasks"></div>
+
+                </div>
+
+
+
+                <!-- IN PROGRESS -->
+
+                <div class="kanban-column">
+
+                    <div class="column-title">
+
+                        <span>
+                            IN PROGRESS
+                        </span>
+
+                        <b id="progressCount">
+                            0
+                        </b>
+
                     </div>
 
                     <div id="progressTasks"></div>
@@ -290,11 +420,21 @@
                 </div>
 
 
+
+                <!-- COMPLETED -->
+
                 <div class="kanban-column">
 
                     <div class="column-title">
-                        <span>COMPLETED</span>
-                        <b id="doneCount">0</b>
+
+                        <span>
+                            COMPLETED
+                        </span>
+
+                        <b id="doneCount">
+                            0
+                        </b>
+
                     </div>
 
                     <div id="doneTasks"></div>
@@ -306,15 +446,23 @@
         </section>
 
 
-        <!-- FOCUS PAGE -->
+
+        <!-- ========================= -->
+        <!-- FOCUS -->
+        <!-- ========================= -->
 
         <section id="focusPage" class="page">
 
             <div class="focus-container">
 
-                <p class="eyebrow">FOCUS SESSION</p>
+                <p class="eyebrow">
+                    FOCUS SESSION
+                </p>
 
-                <h2>Deep Work</h2>
+                <h2>
+                    Deep Work
+                </h2>
+
 
                 <div id="timer" class="timer">
                     25:00
@@ -367,8 +515,13 @@
 
 
                 <p class="focus-info">
+
                     Completed focus sessions today:
-                    <strong id="sessionCount">0</strong>
+
+                    <strong id="sessionCount">
+                        0
+                    </strong>
+
                 </p>
 
             </div>
@@ -376,22 +529,36 @@
         </section>
 
 
+
+        <!-- ========================= -->
         <!-- ANALYTICS -->
+        <!-- ========================= -->
 
         <section id="analyticsPage" class="page">
 
             <div class="analytics-grid">
+
+
+                <!-- PRODUCTIVITY -->
 
                 <div class="panel">
 
                     <div class="panel-header">
 
                         <div>
-                            <h3>Productivity Overview</h3>
-                            <p>Your recent activity.</p>
+
+                            <h3>
+                                Productivity Overview
+                            </h3>
+
+                            <p>
+                                Your recent activity.
+                            </p>
+
                         </div>
 
                     </div>
+
 
                     <div
                         id="weeklyChart"
@@ -401,25 +568,54 @@
                 </div>
 
 
+
+                <!-- BREAKDOWN -->
+
                 <div class="panel">
 
-                    <h3>Task Breakdown</h3>
+                    <h3>
+                        Task Breakdown
+                    </h3>
+
 
                     <div class="breakdown">
 
                         <div>
-                            <span>High Priority</span>
-                            <strong id="highTasks">0</strong>
+
+                            <span>
+                                High Priority
+                            </span>
+
+                            <strong id="highTasks">
+                                0
+                            </strong>
+
                         </div>
 
-                        <div>
-                            <span>Medium Priority</span>
-                            <strong id="mediumTasks">0</strong>
-                        </div>
 
                         <div>
-                            <span>Low Priority</span>
-                            <strong id="lowTasks">0</strong>
+
+                            <span>
+                                Medium Priority
+                            </span>
+
+                            <strong id="mediumTasks">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Low Priority
+                            </span>
+
+                            <strong id="lowTasks">
+                                0
+                            </strong>
+
                         </div>
 
                     </div>
@@ -433,29 +629,47 @@
     </main>
 
 
+
+    <!-- ========================= -->
     <!-- ADD TASK MODAL -->
+    <!-- ========================= -->
 
     <div id="modal" class="modal">
 
         <div class="modal-box">
 
+
             <div class="modal-header">
 
                 <div>
-                    <p class="eyebrow">TASK CREATOR</p>
-                    <h2>New Task</h2>
+
+                    <p class="eyebrow">
+                        TASK CREATOR
+                    </p>
+
+                    <h2>
+                        New Task
+                    </h2>
+
                 </div>
 
-                <button id="closeModal" class="close-button">
+
+                <button
+                    id="closeModal"
+                    class="close-button"
+                >
                     ×
                 </button>
 
             </div>
 
 
+
             <form id="taskForm">
 
+
                 <label>
+
                     Task name
 
                     <input
@@ -468,9 +682,12 @@
                 </label>
 
 
+
                 <div class="form-row">
 
+
                     <label>
+
                         Priority
 
                         <select id="taskPriority">
@@ -495,7 +712,9 @@
                     </label>
 
 
+
                     <label>
+
                         Category
 
                         <select id="taskCategory">
@@ -523,7 +742,9 @@
                 </div>
 
 
+
                 <label>
+
                     Due date
 
                     <input
@@ -533,6 +754,7 @@
                     >
 
                 </label>
+
 
 
                 <button
@@ -549,7 +771,11 @@
     </div>
 
 
+
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
