@@ -995,8 +995,7 @@ function renderDashboard() {
 
             <p class="task-meta">
                 No tasks for today.
-                Enjoy the suspiciously
-                peaceful schedule. 💀
+                Enjoy the peaceful schedule. 
             </p>
 
         `;
