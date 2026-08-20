@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Focus Focus</title>
@@ -13,17 +11,19 @@
 
 <body>
 
-    <!-- SIDEBAR -->
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
     <aside class="sidebar">
 
         <div class="brand">
 
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
+            <div class="brand-logo">
+                <img src="images/logo.png" alt="Focus Focus">
             </div>
 
-            <div>
+            <div class="brand-text">
                 <h1>Focus Focus</h1>
                 <span>Productivity OS</span>
             </div>
@@ -31,38 +31,41 @@
         </div>
 
 
-        <nav>
+        <nav class="navigation">
 
             <button class="nav-item active" data-page="dashboard">
                 <span>📊</span>
-                Dashboard
+                <span>Dashboard</span>
             </button>
 
             <button class="nav-item" data-page="tasks">
-                <span>📝</span>
-                Tasks
+                <span>✓</span>
+                <span>Tasks</span>
+            </button>
+
+            <button class="nav-item" data-page="matrix">
+                <span>🧠</span>
+                <span>Eisenhower</span>
             </button>
 
             <button class="nav-item" data-page="focus">
-                <span>⏱️</span>
-                Focus
+                <span>🍅</span>
+                <span>Pomodoro</span>
             </button>
 
             <button class="nav-item" data-page="analytics">
                 <span>📈</span>
-                Analytics
+                <span>Analytics</span>
             </button>
 
         </nav>
 
 
-        <!-- THEME BUTTON -->
-
         <div class="sidebar-bottom">
 
             <button id="themeButton" class="nav-item">
                 <span>🌙</span>
-                Toggle Theme
+                <span>Toggle Theme</span>
             </button>
 
         </div>
@@ -70,40 +73,49 @@
     </aside>
 
 
-    <!-- MAIN -->
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main class="main">
-
 
         <!-- TOP BAR -->
 
         <header class="topbar">
 
             <div>
-                <p class="eyebrow">YOUR WORKSPACE</p>
-                <h2 id="pageTitle">Dashboard</h2>
+
+                <p class="eyebrow">
+                    YOUR WORKSPACE
+                </p>
+
+                <h2 id="pageTitle">
+                    Dashboard
+                </h2>
+
             </div>
 
-            <div class="header-actions">
 
-                <button id="quickAddButton" class="primary-button">
-                    + New Task
-                </button>
-
-            </div>
+            <button
+                id="quickAddButton"
+                class="primary-button"
+            >
+                + New Task
+            </button>
 
         </header>
 
 
 
-        <!-- ========================= -->
-        <!-- DASHBOARD -->
-        <!-- ========================= -->
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
 
-        <section id="dashboardPage" class="page active-page">
-
-
-            <!-- WELCOME -->
+        <section
+            id="dashboardPage"
+            class="page active-page"
+        >
 
             <div class="welcome">
 
@@ -144,10 +156,9 @@
 
 
 
-            <!-- STATS -->
+            <!-- STAT CARDS -->
 
             <div class="stats-grid">
-
 
                 <div class="stat-card">
 
@@ -194,7 +205,7 @@
                 <div class="stat-card">
 
                     <div class="stat-icon orange">
-                        ⏱
+                        🍅
                     </div>
 
                     <div>
@@ -236,7 +247,7 @@
 
 
 
-            <!-- PROGRESS -->
+            <!-- DAILY PROGRESS -->
 
             <div class="panel">
 
@@ -289,7 +300,6 @@
 
                     </div>
 
-
                     <button
                         class="text-button"
                         data-page-link="tasks"
@@ -304,18 +314,48 @@
 
             </div>
 
+
+
+            <!-- CATEGORY OVERVIEW -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Categories
+                        </h3>
+
+                        <p>
+                            See what you're working on.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="categoryOverview"
+                    class="category-grid"
+                ></div>
+
+            </div>
+
         </section>
 
 
 
-        <!-- ========================= -->
-        <!-- TASKS -->
-        <!-- ========================= -->
+        <!-- =========================
+             TASKS
+        ========================== -->
 
-        <section id="tasksPage" class="page">
-
-
-            <!-- TOOLBAR -->
+        <section
+            id="tasksPage"
+            class="page"
+        >
 
             <div class="toolbar">
 
@@ -327,43 +367,51 @@
                 >
 
 
-                <select id="filterPriority">
-
-                    <option value="all">
-                        All priorities
-                    </option>
-
-                    <option value="high">
-                        High
-                    </option>
-
-                    <option value="medium">
-                        Medium
-                    </option>
-
-                    <option value="low">
-                        Low
-                    </option>
-
-                </select>
-
-
                 <select id="filterCategory">
 
                     <option value="all">
                         All categories
                     </option>
 
-                    <option value="study">
-                        Study
+                    <option value="school">
+                        School
                     </option>
 
                     <option value="work">
                         Work
                     </option>
 
+                    <option value="personal">
+                        Personal
+                    </option>
+
                     <option value="project">
-                        Project
+                        Projects
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <select id="filterStatus">
+
+                    <option value="all">
+                        All status
+                    </option>
+
+                    <option value="todo">
+                        To Do
+                    </option>
+
+                    <option value="progress">
+                        In Progress
+                    </option>
+
+                    <option value="done">
+                        Completed
                     </option>
 
                 </select>
@@ -372,72 +420,210 @@
 
 
 
-            <!-- KANBAN -->
+            <!-- CATEGORY TASK BOXES -->
 
-            <div class="kanban">
+            <div
+                id="categoryTaskGrid"
+                class="category-task-grid"
+            ></div>
+
+        </section>
 
 
-                <!-- TODO -->
 
-                <div class="kanban-column">
+        <!-- =========================
+             EISENHOWER MATRIX
+        ========================== -->
 
-                    <div class="column-title">
+        <section
+            id="matrixPage"
+            class="page"
+        >
 
-                        <span>
-                            TO DO
-                        </span>
+            <div class="section-intro">
 
-                        <b id="todoCount">
+                <p class="eyebrow">
+                    PRIORITIZATION
+                </p>
+
+                <h2>
+                    Eisenhower Matrix
+                </h2>
+
+                <p>
+                    Decide what deserves your attention,
+                    instead of letting everything scream
+                    for it.
+                </p>
+
+            </div>
+
+
+            <div class="matrix">
+
+                <!-- DO FIRST -->
+
+                <div class="matrix-quadrant do-first">
+
+                    <div class="matrix-header">
+
+                        <div>
+
+                            <span class="matrix-icon">
+                                🔴
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Do First
+                                </h3>
+
+                                <p>
+                                    Urgent + Important
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <b id="doFirstCount">
                             0
                         </b>
 
                     </div>
 
-                    <div id="todoTasks"></div>
+
+                    <div
+                        id="doFirstTasks"
+                        class="matrix-tasks"
+                    ></div>
 
                 </div>
 
 
 
-                <!-- IN PROGRESS -->
+                <!-- SCHEDULE -->
 
-                <div class="kanban-column">
+                <div class="matrix-quadrant schedule">
 
-                    <div class="column-title">
+                    <div class="matrix-header">
 
-                        <span>
-                            IN PROGRESS
-                        </span>
+                        <div>
 
-                        <b id="progressCount">
+                            <span class="matrix-icon">
+                                🟠
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Schedule
+                                </h3>
+
+                                <p>
+                                    Not Urgent + Important
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <b id="scheduleCount">
                             0
                         </b>
 
                     </div>
 
-                    <div id="progressTasks"></div>
+
+                    <div
+                        id="scheduleTasks"
+                        class="matrix-tasks"
+                    ></div>
 
                 </div>
 
 
 
-                <!-- COMPLETED -->
+                <!-- DELEGATE -->
 
-                <div class="kanban-column">
+                <div class="matrix-quadrant delegate">
 
-                    <div class="column-title">
+                    <div class="matrix-header">
 
-                        <span>
-                            COMPLETED
-                        </span>
+                        <div>
 
-                        <b id="doneCount">
+                            <span class="matrix-icon">
+                                🔵
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Delegate
+                                </h3>
+
+                                <p>
+                                    Urgent + Not Important
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <b id="delegateCount">
                             0
                         </b>
 
                     </div>
 
-                    <div id="doneTasks"></div>
+
+                    <div
+                        id="delegateTasks"
+                        class="matrix-tasks"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- ELIMINATE -->
+
+                <div class="matrix-quadrant eliminate">
+
+                    <div class="matrix-header">
+
+                        <div>
+
+                            <span class="matrix-icon">
+                                ⚪
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Eliminate
+                                </h3>
+
+                                <p>
+                                    Not Urgent + Not Important
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <b id="eliminateCount">
+                            0
+                        </b>
+
+                    </div>
+
+
+                    <div
+                        id="eliminateTasks"
+                        class="matrix-tasks"
+                    ></div>
 
                 </div>
 
@@ -447,33 +633,38 @@
 
 
 
-        <!-- ========================= -->
-        <!-- FOCUS -->
-        <!-- ========================= -->
+        <!-- =========================
+             POMODORO
+        ========================== -->
 
-        <section id="focusPage" class="page">
+        <section
+            id="focusPage"
+            class="page"
+        >
 
-            <div class="focus-container">
+            <div class="pomodoro-container">
 
                 <p class="eyebrow">
                     FOCUS SESSION
                 </p>
 
                 <h2>
-                    Deep Work
+                    Pomodoro Timer
                 </h2>
 
+                <p class="pomodoro-description">
+                    Work with focus. Rest with purpose.
+                </p>
 
-                <div id="timer" class="timer">
-                    25:00
-                </div>
 
+                <!-- MODE -->
 
                 <div class="timer-mode">
 
                     <button
                         class="mode active"
                         data-minutes="25"
+                        data-mode="focus"
                     >
                         Focus
                     </button>
@@ -481,6 +672,7 @@
                     <button
                         class="mode"
                         data-minutes="5"
+                        data-mode="short"
                     >
                         Short Break
                     </button>
@@ -488,12 +680,34 @@
                     <button
                         class="mode"
                         data-minutes="15"
+                        data-mode="long"
                     >
                         Long Break
                     </button>
 
                 </div>
 
+
+                <!-- TIMER -->
+
+                <div
+                    id="timer"
+                    class="timer"
+                >
+                    25:00
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="timer-progress">
+
+                    <div id="timerProgress"></div>
+
+                </div>
+
+
+                <!-- CONTROLS -->
 
                 <div class="timer-controls">
 
@@ -514,15 +728,36 @@
                 </div>
 
 
-                <p class="focus-info">
+                <!-- SESSION INFO -->
 
-                    Completed focus sessions today:
+                <div class="focus-stats">
 
-                    <strong id="sessionCount">
-                        0
-                    </strong>
+                    <div>
 
-                </p>
+                        <strong id="sessionCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Sessions
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="todayFocus">
+                            0
+                        </strong>
+
+                        <span>
+                            Minutes Today
+                        </span>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -530,16 +765,16 @@
 
 
 
-        <!-- ========================= -->
-        <!-- ANALYTICS -->
-        <!-- ========================= -->
+        <!-- =========================
+             ANALYTICS
+        ========================== -->
 
-        <section id="analyticsPage" class="page">
+        <section
+            id="analyticsPage"
+            class="page"
+        >
 
             <div class="analytics-grid">
-
-
-                <!-- PRODUCTIVITY -->
 
                 <div class="panel">
 
@@ -552,7 +787,8 @@
                             </h3>
 
                             <p>
-                                Your recent activity.
+                                Completed tasks over the
+                                last 7 days.
                             </p>
 
                         </div>
@@ -568,9 +804,6 @@
                 </div>
 
 
-
-                <!-- BREAKDOWN -->
-
                 <div class="panel">
 
                     <h3>
@@ -583,10 +816,10 @@
                         <div>
 
                             <span>
-                                High Priority
+                                🔴 Do First
                             </span>
 
-                            <strong id="highTasks">
+                            <strong id="analyticsDoFirst">
                                 0
                             </strong>
 
@@ -596,10 +829,10 @@
                         <div>
 
                             <span>
-                                Medium Priority
+                                🟠 Schedule
                             </span>
 
-                            <strong id="mediumTasks">
+                            <strong id="analyticsSchedule">
                                 0
                             </strong>
 
@@ -609,10 +842,23 @@
                         <div>
 
                             <span>
-                                Low Priority
+                                🔵 Delegate
                             </span>
 
-                            <strong id="lowTasks">
+                            <strong id="analyticsDelegate">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                ⚪ Eliminate
+                            </span>
+
+                            <strong id="analyticsEliminate">
                                 0
                             </strong>
 
@@ -624,20 +870,52 @@
 
             </div>
 
+
+
+            <!-- CATEGORY ANALYTICS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Category Activity
+                        </h3>
+
+                        <p>
+                            Where your tasks are going.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="categoryAnalytics"
+                    class="category-grid"
+                ></div>
+
+            </div>
+
         </section>
 
     </main>
 
 
 
-    <!-- ========================= -->
-    <!-- ADD TASK MODAL -->
-    <!-- ========================= -->
+    <!-- =========================
+         ADD TASK MODAL
+    ========================== -->
 
-    <div id="modal" class="modal">
+    <div
+        id="modal"
+        class="modal"
+    >
 
         <div class="modal-box">
-
 
             <div class="modal-header">
 
@@ -664,9 +942,9 @@
             </div>
 
 
-
             <form id="taskForm">
 
+                <!-- NAME -->
 
                 <label>
 
@@ -683,65 +961,71 @@
 
 
 
-                <div class="form-row">
+                <!-- EISENHOWER -->
+
+                <label>
+
+                    Eisenhower quadrant
+
+                    <select id="taskQuadrant">
+
+                        <option value="do-first">
+                            🔴 Do First
+                        </option>
+
+                        <option value="schedule">
+                            🟠 Schedule
+                        </option>
+
+                        <option value="delegate">
+                            🔵 Delegate
+                        </option>
+
+                        <option value="eliminate">
+                            ⚪ Eliminate
+                        </option>
+
+                    </select>
+
+                </label>
 
 
-                    <label>
 
-                        Priority
+                <!-- CATEGORY -->
 
-                        <select id="taskPriority">
+                <label>
 
-                            <option value="high">
-                                High
-                            </option>
+                    Category
 
-                            <option
-                                value="medium"
-                                selected
-                            >
-                                Medium
-                            </option>
+                    <select id="taskCategory">
 
-                            <option value="low">
-                                Low
-                            </option>
+                        <option value="school">
+                            🎓 School
+                        </option>
 
-                        </select>
+                        <option value="work">
+                            💼 Work
+                        </option>
 
-                    </label>
+                        <option value="personal">
+                            🧍 Personal
+                        </option>
 
+                        <option value="project">
+                            🛠️ Project
+                        </option>
 
+                        <option value="other">
+                            📦 Other
+                        </option>
 
-                    <label>
+                    </select>
 
-                        Category
-
-                        <select id="taskCategory">
-
-                            <option value="study">
-                                Study
-                            </option>
-
-                            <option value="work">
-                                Work
-                            </option>
-
-                            <option value="personal">
-                                Personal
-                            </option>
-
-                            <option value="project">
-                                Project
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                </div>
+                </label>
 
 
+
+                <!-- DUE DATE -->
 
                 <label>
 
@@ -752,6 +1036,28 @@
                         type="date"
                         required
                     >
+
+                </label>
+
+
+
+                <!-- STATUS -->
+
+                <label>
+
+                    Status
+
+                    <select id="taskStatus">
+
+                        <option value="todo">
+                            To Do
+                        </option>
+
+                        <option value="progress">
+                            In Progress
+                        </option>
+
+                    </select>
 
                 </label>
 
@@ -772,10 +1078,7 @@
 
 
 
-    <!-- JAVASCRIPT -->
-
     <script src="script.js"></script>
 
 </body>
-
 </html>

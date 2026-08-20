@@ -1,32 +1,37 @@
 /* =========================================
-   FOCUSFORGE
-   Productivity Tracker
+   FOCUS FOCUS
+   Productivity Suite
+   JavaScript
 ========================================= */
 
 
-/* ---------- STORAGE ---------- */
+/* =========================================
+   STORAGE
+========================================= */
 
 let tasks =
     JSON.parse(
-        localStorage.getItem("focusforge_tasks")
+        localStorage.getItem("focusfocus_tasks")
     ) || [];
 
 let focusMinutes =
     Number(
         localStorage.getItem(
-            "focusforge_focus_minutes"
+            "focusfocus_focus_minutes"
         )
     ) || 0;
 
 let sessions =
     Number(
         localStorage.getItem(
-            "focusforge_sessions"
+            "focusfocus_sessions"
         )
     ) || 0;
 
 
-/* ---------- ELEMENTS ---------- */
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const modal =
     document.getElementById("modal");
@@ -34,17 +39,20 @@ const modal =
 const taskForm =
     document.getElementById("taskForm");
 
-const taskDate =
-    document.getElementById("taskDate");
-
 const taskName =
     document.getElementById("taskName");
 
-const taskPriority =
-    document.getElementById("taskPriority");
-
 const taskCategory =
     document.getElementById("taskCategory");
+
+const taskDate =
+    document.getElementById("taskDate");
+
+const taskImportance =
+    document.getElementById("taskImportance");
+
+const taskUrgency =
+    document.getElementById("taskUrgency");
 
 const today =
     new Date()
@@ -52,40 +60,52 @@ const today =
         .split("T")[0];
 
 
-/* ---------- INITIAL SETUP ---------- */
+/* =========================================
+   INITIAL SETUP
+========================================= */
 
-taskDate.value = today;
-
-document.getElementById(
-    "currentDate"
-).textContent =
-    new Date().toLocaleDateString(
-        undefined,
-        {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-        }
-    );
+if (taskDate) {
+    taskDate.value = today;
+}
 
 
-/* ---------- SAVE ---------- */
+const currentDate =
+    document.getElementById("currentDate");
+
+if (currentDate) {
+
+    currentDate.textContent =
+        new Date().toLocaleDateString(
+            undefined,
+            {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
+
+}
+
+
+/* =========================================
+   SAVE DATA
+========================================= */
 
 function saveData() {
 
     localStorage.setItem(
-        "focusforge_tasks",
+        "focusfocus_tasks",
         JSON.stringify(tasks)
     );
 
     localStorage.setItem(
-        "focusforge_focus_minutes",
+        "focusfocus_focus_minutes",
         focusMinutes
     );
 
     localStorage.setItem(
-        "focusforge_sessions",
+        "focusfocus_sessions",
         sessions
     );
 
@@ -97,9 +117,13 @@ function saveData() {
 ========================================= */
 
 const navItems =
-    document.querySelectorAll(".nav-item[data-page]");
+    document.querySelectorAll(
+        ".nav-item[data-page]"
+    );
+
 
 const pages = {
+
     dashboard:
         document.getElementById(
             "dashboardPage"
@@ -119,7 +143,68 @@ const pages = {
         document.getElementById(
             "analyticsPage"
         )
+
 };
+
+
+function showPage(page) {
+
+    Object.values(pages).forEach(
+        element => {
+
+            if (element) {
+                element.classList.remove(
+                    "active-page"
+                );
+            }
+
+        }
+    );
+
+
+    if (pages[page]) {
+
+        pages[page].classList.add(
+            "active-page"
+        );
+
+    }
+
+
+    navItems.forEach(button => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.page === page
+        );
+
+    });
+
+
+    const titles = {
+
+        dashboard: "Dashboard",
+        tasks: "Tasks",
+        focus: "Focus",
+        analytics: "Analytics"
+
+    };
+
+
+    const pageTitle =
+        document.getElementById(
+            "pageTitle"
+        );
+
+
+    if (pageTitle) {
+
+        pageTitle.textContent =
+            titles[page] || "Dashboard";
+
+    }
+
+}
 
 
 navItems.forEach(button => {
@@ -128,10 +213,9 @@ navItems.forEach(button => {
         "click",
         () => {
 
-            const page =
-                button.dataset.page;
-
-            showPage(page);
+            showPage(
+                button.dataset.page
+            );
 
         }
     );
@@ -157,90 +241,76 @@ document
     });
 
 
-function showPage(page) {
-
-    Object.values(pages).forEach(
-        p => p.classList.remove(
-            "active-page"
-        )
-    );
-
-
-    pages[page].classList.add(
-        "active-page"
-    );
-
-
-    navItems.forEach(
-        button => {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.page === page
-            );
-
-        }
-    );
-
-
-    const titles = {
-
-        dashboard: "Dashboard",
-
-        tasks: "Tasks",
-
-        focus: "Focus",
-
-        analytics: "Analytics"
-
-    };
-
-
-    document.getElementById(
-        "pageTitle"
-    ).textContent = titles[page];
-
-}
-
-
 /* =========================================
    MODAL
 ========================================= */
 
-document
-    .getElementById("quickAddButton")
-    .addEventListener(
+const quickAddButton =
+    document.getElementById(
+        "quickAddButton"
+    );
+
+const closeModalButton =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+if (quickAddButton) {
+
+    quickAddButton.addEventListener(
         "click",
         openModal
     );
 
+}
 
-document
-    .getElementById("closeModal")
-    .addEventListener(
+
+if (closeModalButton) {
+
+    closeModalButton.addEventListener(
         "click",
         closeModal
     );
 
+}
 
-modal.addEventListener(
-    "click",
-    event => {
 
-        if (event.target === modal) {
-            closeModal();
+if (modal) {
+
+    modal.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === modal
+            ) {
+
+                closeModal();
+
+            }
+
         }
+    );
 
-    }
-);
+}
 
 
 function openModal() {
 
+    if (!modal) return;
+
     modal.classList.add("show");
 
+
     setTimeout(
-        () => taskName.focus(),
+        () => {
+
+            if (taskName) {
+                taskName.focus();
+            }
+
+        },
         100
     );
 
@@ -249,7 +319,74 @@ function openModal() {
 
 function closeModal() {
 
+    if (!modal) return;
+
     modal.classList.remove("show");
+
+}
+
+
+/* =========================================
+   EISENHOWER METHOD
+========================================= */
+
+/*
+    Eisenhower Matrix:
+
+    Important + Urgent
+        = DO
+
+    Important + Not Urgent
+        = SCHEDULE
+
+    Not Important + Urgent
+        = DELEGATE
+
+    Not Important + Not Urgent
+        = ELIMINATE
+*/
+
+
+function getEisenhowerQuadrant(task) {
+
+    const important =
+        task.important === true;
+
+    const urgent =
+        task.urgent === true;
+
+
+    if (
+        important &&
+        urgent
+    ) {
+
+        return "do";
+
+    }
+
+
+    if (
+        important &&
+        !urgent
+    ) {
+
+        return "schedule";
+
+    }
+
+
+    if (
+        !important &&
+        urgent
+    ) {
+
+        return "delegate";
+
+    }
+
+
+    return "eliminate";
 
 }
 
@@ -258,56 +395,79 @@ function closeModal() {
    TASK CREATION
 ========================================= */
 
-taskForm.addEventListener(
-    "submit",
-    event => {
+if (taskForm) {
 
-        event.preventDefault();
+    taskForm.addEventListener(
+        "submit",
+        event => {
 
-
-        const task = {
-
-            id:
-                Date.now(),
-
-            name:
-                taskName.value.trim(),
-
-            priority:
-                taskPriority.value,
-
-            category:
-                taskCategory.value,
-
-            date:
-                taskDate.value,
-
-            status:
-                "todo",
-
-            completed:
-                false,
-
-            created:
-                new Date().toISOString()
-
-        };
+            event.preventDefault();
 
 
-        tasks.push(task);
+            const task = {
 
-        saveData();
+                id:
+                    Date.now(),
 
-        taskForm.reset();
+                name:
+                    taskName.value.trim(),
 
-        taskDate.value = today;
+                category:
+                    taskCategory.value,
 
-        closeModal();
+                date:
+                    taskDate.value,
 
-        renderAll();
+                important:
+                    taskImportance
+                        ? taskImportance.checked
+                        : false,
 
-    }
-);
+                urgent:
+                    taskUrgency
+                        ? taskUrgency.checked
+                        : false,
+
+                status:
+                    "todo",
+
+                completed:
+                    false,
+
+                created:
+                    new Date().toISOString()
+
+            };
+
+
+            if (!task.name) {
+                return;
+            }
+
+
+            tasks.push(task);
+
+
+            saveData();
+
+
+            taskForm.reset();
+
+
+            if (taskDate) {
+                taskDate.value = today;
+            }
+
+
+            closeModal();
+
+
+            renderAll();
+
+        }
+    );
+
+}
 
 
 /* =========================================
@@ -318,7 +478,7 @@ function toggleTask(id) {
 
     const task =
         tasks.find(
-            t => t.id === id
+            task => task.id === id
         );
 
 
@@ -346,7 +506,7 @@ function deleteTask(id) {
 
     tasks =
         tasks.filter(
-            t => t.id !== id
+            task => task.id !== id
         );
 
 
@@ -357,11 +517,14 @@ function deleteTask(id) {
 }
 
 
-function moveTask(id, status) {
+function moveTask(
+    id,
+    status
+) {
 
     const task =
         tasks.find(
-            t => t.id === id
+            task => task.id === id
         );
 
 
@@ -369,6 +532,7 @@ function moveTask(id, status) {
 
 
     task.status = status;
+
 
     task.completed =
         status === "done";
@@ -387,9 +551,33 @@ function moveTask(id, status) {
 
 function createTaskHTML(task) {
 
+    const quadrant =
+        getEisenhowerQuadrant(task);
+
+
+    const quadrantNames = {
+
+        do:
+            "DO",
+
+        schedule:
+            "SCHEDULE",
+
+        delegate:
+            "DELEGATE",
+
+        eliminate:
+            "ELIMINATE"
+
+    };
+
+
     return `
 
-        <div class="task-item">
+        <div
+            class="task-item"
+            data-id="${task.id}"
+        >
 
             <div class="task-left">
 
@@ -426,30 +614,279 @@ function createTaskHTML(task) {
 
                     <div class="task-meta">
 
-                        ${task.category}
+                        ${escapeHTML(
+                            task.category
+                        )}
+
                         •
+
                         ${task.date}
 
                     </div>
+
+
+                    <span
+                        class="eisenhower-tag ${quadrant}"
+                    >
+                        ${quadrantNames[quadrant]}
+                    </span>
 
                 </div>
 
             </div>
 
 
-            <div>
+            <div class="task-actions">
 
-                <span
-                    class="priority ${task.priority}"
+                <button
+                    class="delete-task"
+                    onclick="
+                        deleteTask(${task.id})
+                    "
+                    title="Delete task"
                 >
-                    ${task.priority}
-                </span>
+                    🗑️
+                </button>
 
             </div>
 
         </div>
 
     `;
+
+}
+
+
+/* =========================================
+   CATEGORY GROUPS
+========================================= */
+
+const categoryNames = {
+
+    school:
+        "🎓 School",
+
+    work:
+        "💼 Work",
+
+    personal:
+        "👤 Personal",
+
+    project:
+        "🛠️ Projects",
+
+    other:
+        "📦 Other"
+
+};
+
+
+function renderCategoryBoxes() {
+
+    const container =
+        document.getElementById(
+            "categoryBoxes"
+        );
+
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    const categories = [
+
+        "school",
+        "work",
+        "personal",
+        "project",
+        "other"
+
+    ];
+
+
+    categories.forEach(
+        category => {
+
+            const categoryTasks =
+                tasks.filter(
+                    task =>
+                        task.category === category
+                );
+
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+
+            box.className =
+                "category-box";
+
+
+            box.innerHTML = `
+
+                <div class="category-header">
+
+                    <h3>
+                        ${categoryNames[category]}
+                    </h3>
+
+                    <span>
+                        ${categoryTasks.length}
+                    </span>
+
+                </div>
+
+
+                <div class="category-task-list">
+
+                    ${
+                        categoryTasks.length
+                            ? categoryTasks
+                                .map(
+                                    createTaskHTML
+                                )
+                                .join("")
+                            : `
+                                <p class="task-meta">
+                                    No tasks here yet.
+                                </p>
+                            `
+                    }
+
+                </div>
+
+            `;
+
+
+            container.appendChild(box);
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   EISENHOWER MATRIX
+========================================= */
+
+function renderEisenhower() {
+
+    const quadrants = {
+
+        do:
+            document.getElementById(
+                "doTasks"
+            ),
+
+        schedule:
+            document.getElementById(
+                "scheduleTasks"
+            ),
+
+        delegate:
+            document.getElementById(
+                "delegateTasks"
+            ),
+
+        eliminate:
+            document.getElementById(
+                "eliminateTasks"
+            )
+
+    };
+
+
+    Object.values(quadrants).forEach(
+        container => {
+
+            if (container) {
+                container.innerHTML = "";
+            }
+
+        }
+    );
+
+
+    tasks.forEach(task => {
+
+        const quadrant =
+            getEisenhowerQuadrant(task);
+
+
+        const container =
+            quadrants[quadrant];
+
+
+        if (
+            container
+        ) {
+
+            container.insertAdjacentHTML(
+                "beforeend",
+                createTaskHTML(task)
+            );
+
+        }
+
+    });
+
+
+    updateQuadrantCount(
+        "doTasks",
+        "doCount"
+    );
+
+    updateQuadrantCount(
+        "scheduleTasks",
+        "scheduleCount"
+    );
+
+    updateQuadrantCount(
+        "delegateTasks",
+        "delegateCount"
+    );
+
+    updateQuadrantCount(
+        "eliminateTasks",
+        "eliminateCount"
+    );
+
+}
+
+
+function updateQuadrantCount(
+    containerId,
+    countId
+) {
+
+    const container =
+        document.getElementById(
+            containerId
+        );
+
+
+    const count =
+        document.getElementById(
+            countId
+        );
+
+
+    if (
+        container &&
+        count
+    ) {
+
+        count.textContent =
+            container.querySelectorAll(
+                ".task-item"
+            ).length;
+
+    }
 
 }
 
@@ -482,65 +919,86 @@ function renderDashboard() {
         total === 0
             ? 0
             : Math.round(
-                (completed / total) * 100
+                completed /
+                total *
+                100
             );
 
 
-    document.getElementById(
-        "completedCount"
-    ).textContent = completed;
+    setText(
+        "completedCount",
+        completed
+    );
 
 
-    document.getElementById(
-        "totalCount"
-    ).textContent = tasks.length;
+    setText(
+        "totalCount",
+        tasks.length
+    );
 
 
-    document.getElementById(
-        "focusMinutes"
-    ).textContent = focusMinutes;
+    setText(
+        "focusMinutes",
+        focusMinutes
+    );
 
 
-    document.getElementById(
-        "progressPercent"
-    ).textContent =
-        percent + "%";
+    setText(
+        "progressPercent",
+        percent + "%"
+    );
 
 
-    document.getElementById(
-        "progressText"
-    ).textContent =
-        `${completed} / ${total}`;
+    setText(
+        "progressText",
+        `${completed} / ${total}`
+    );
 
 
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        percent + "%";
+    const progressBar =
+        document.getElementById(
+            "progressBar"
+        );
 
 
-    document.getElementById(
-        "streakCount"
-    ).textContent =
-        calculateStreak();
+    if (progressBar) {
+
+        progressBar.style.width =
+            percent + "%";
+
+    }
 
 
-    const container =
+    setText(
+        "streakCount",
+        calculateStreak()
+    );
+
+
+    const todayContainer =
         document.getElementById(
             "todayTasks"
         );
 
 
-    container.innerHTML = "";
+    if (!todayContainer) return;
 
 
-    if (todayTasks.length === 0) {
+    todayContainer.innerHTML = "";
 
-        container.innerHTML = `
+
+    if (
+        todayTasks.length === 0
+    ) {
+
+        todayContainer.innerHTML = `
+
             <p class="task-meta">
-                No tasks for today. Enjoy the
-                empty schedule. 
+                No tasks for today.
+                Enjoy the suspiciously
+                peaceful schedule. 💀
             </p>
+
         `;
 
         return;
@@ -550,86 +1008,57 @@ function renderDashboard() {
 
     todayTasks
         .slice(0, 6)
-        .forEach(
-            task => {
+        .forEach(task => {
 
-                container.insertAdjacentHTML(
-                    "beforeend",
-                    createTaskHTML(task)
-                );
+            todayContainer.insertAdjacentHTML(
+                "beforeend",
+                createTaskHTML(task)
+            );
 
-            }
-        );
+        });
 
 }
 
 
 /* =========================================
-   KANBAN
+   TASK PAGE
 ========================================= */
 
-function renderKanban() {
+function renderTaskPage() {
 
-    const containers = {
-
-        todo:
-            document.getElementById(
-                "todoTasks"
-            ),
-
-        progress:
-            document.getElementById(
-                "progressTasks"
-            ),
-
-        done:
-            document.getElementById(
-                "doneTasks"
-            )
-
-    };
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
 
 
-    Object.values(containers).forEach(
-        container =>
-            container.innerHTML = ""
-    );
-
-
-    let filtered =
-        [...tasks];
+    const categoryFilter =
+        document.getElementById(
+            "filterCategory"
+        );
 
 
     const search =
-        document.getElementById(
-            "searchInput"
-        ).value.toLowerCase();
-
-
-    const priority =
-        document.getElementById(
-            "filterPriority"
-        ).value;
+        searchInput
+            ? searchInput.value
+                .toLowerCase()
+                .trim()
+            : "";
 
 
     const category =
-        document.getElementById(
-            "filterCategory"
-        ).value;
+        categoryFilter
+            ? categoryFilter.value
+            : "all";
 
 
-    filtered =
-        filtered.filter(task => {
+    const filtered =
+        tasks.filter(task => {
 
             const matchesSearch =
                 task.name
                     .toLowerCase()
                     .includes(search);
-
-
-            const matchesPriority =
-                priority === "all" ||
-                task.priority === priority;
 
 
             const matchesCategory =
@@ -639,99 +1068,187 @@ function renderKanban() {
 
             return (
                 matchesSearch &&
-                matchesPriority &&
                 matchesCategory
             );
 
         });
 
 
-    filtered.forEach(task => {
+    const todo =
+        document.getElementById(
+            "todoTasks"
+        );
 
-        containers[task.status]
-            .insertAdjacentHTML(
-                "beforeend",
-                createTaskHTML(task)
-            );
+    const progress =
+        document.getElementById(
+            "progressTasks"
+        );
+
+    const done =
+        document.getElementById(
+            "doneTasks"
+        );
+
+
+    [
+        todo,
+        progress,
+        done
+    ].forEach(container => {
+
+        if (container) {
+            container.innerHTML = "";
+        }
 
     });
 
 
-    document.getElementById(
-        "todoCount"
-    ).textContent =
+    filtered.forEach(task => {
+
+        let container;
+
+
+        if (
+            task.status === "progress"
+        ) {
+
+            container = progress;
+
+        } else if (
+            task.status === "done"
+        ) {
+
+            container = done;
+
+        } else {
+
+            container = todo;
+
+        }
+
+
+        if (container) {
+
+            container.insertAdjacentHTML(
+                "beforeend",
+                createTaskHTML(task)
+            );
+
+        }
+
+    });
+
+
+    setText(
+        "todoCount",
         filtered.filter(
-            t => t.status === "todo"
-        ).length;
+            task =>
+                task.status === "todo"
+        ).length
+    );
 
 
-    document.getElementById(
-        "progressCount"
-    ).textContent =
+    setText(
+        "progressCount",
         filtered.filter(
-            t => t.status === "progress"
-        ).length;
+            task =>
+                task.status === "progress"
+        ).length
+    );
 
 
-    document.getElementById(
-        "doneCount"
-    ).textContent =
+    setText(
+        "doneCount",
         filtered.filter(
-            t => t.status === "done"
-        ).length;
+            task =>
+                task.status === "done"
+        ).length
+    );
 
 }
 
 
 /* =========================================
-   SEARCH
+   SEARCH + FILTER
 ========================================= */
 
-document
-    .getElementById("searchInput")
-    .addEventListener(
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const filterCategory =
+    document.getElementById(
+        "filterCategory"
+    );
+
+
+if (searchInput) {
+
+    searchInput.addEventListener(
         "input",
-        renderKanban
+        renderTaskPage
     );
 
+}
 
-document
-    .getElementById("filterPriority")
-    .addEventListener(
+
+if (filterCategory) {
+
+    filterCategory.addEventListener(
         "change",
-        renderKanban
+        renderTaskPage
     );
 
-
-document
-    .getElementById("filterCategory")
-    .addEventListener(
-        "change",
-        renderKanban
-    );
+}
 
 
 /* =========================================
-   FOCUS TIMER
+   POMODORO TIMER
 ========================================= */
 
-let timerSeconds = 25 * 60;
+let timerSeconds =
+    25 * 60;
 
-let timerRunning = false;
+let timerRunning =
+    false;
 
-let timerInterval = null;
+let timerInterval =
+    null;
+
+let currentMode =
+    "focus";
 
 
 const timerElement =
-    document.getElementById("timer");
+    document.getElementById(
+        "timer"
+    );
+
+
+const startTimerButton =
+    document.getElementById(
+        "startTimer"
+    );
+
+
+const resetTimerButton =
+    document.getElementById(
+        "resetTimer"
+    );
 
 
 function updateTimerDisplay() {
+
+    if (!timerElement) return;
+
 
     const minutes =
         Math.floor(
             timerSeconds / 60
         );
+
 
     const seconds =
         timerSeconds % 60;
@@ -743,71 +1260,71 @@ function updateTimerDisplay() {
 }
 
 
-document
-    .getElementById("startTimer")
-    .addEventListener(
-        "click",
-        () => {
+function startTimer() {
 
-            if (timerRunning) {
+    if (timerRunning) {
 
-                clearInterval(
-                    timerInterval
-                );
+        pauseTimer();
 
-                timerRunning = false;
+        return;
 
-                document.getElementById(
-                    "startTimer"
-                ).textContent =
-                    "Resume Focus";
-
-                return;
-
-            }
+    }
 
 
-            timerRunning = true;
+    timerRunning = true;
 
 
-            document.getElementById(
-                "startTimer"
-            ).textContent =
-                "Pause";
+    if (startTimerButton) {
+
+        startTimerButton.textContent =
+            "Pause";
+
+    }
 
 
-            timerInterval =
-                setInterval(
-                    () => {
+    timerInterval =
+        setInterval(
+            () => {
 
-                        timerSeconds--;
-
-
-                        updateTimerDisplay();
+                timerSeconds--;
 
 
-                        if (
-                            timerSeconds <= 0
-                        ) {
+                updateTimerDisplay();
 
-                            finishSession();
 
-                        }
+                if (
+                    timerSeconds <= 0
+                ) {
 
-                    },
-                    1000
-                );
+                    finishPomodoro();
 
-        }
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+function pauseTimer() {
+
+    clearInterval(
+        timerInterval
     );
 
 
-document
-    .getElementById("resetTimer")
-    .addEventListener(
-        "click",
-        resetTimer
-    );
+    timerRunning = false;
+
+
+    if (startTimerButton) {
+
+        startTimerButton.textContent =
+            "Resume";
+
+    }
+
+}
 
 
 function resetTimer() {
@@ -816,53 +1333,103 @@ function resetTimer() {
         timerInterval
     );
 
+
     timerRunning = false;
 
-    timerSeconds = 25 * 60;
+
+    const durations = {
+
+        focus: 25,
+        short: 5,
+        long: 15
+
+    };
+
+
+    timerSeconds =
+        durations[currentMode] *
+        60;
+
 
     updateTimerDisplay();
 
-    document.getElementById(
-        "startTimer"
-    ).textContent =
-        "Start Focus";
+
+    if (startTimerButton) {
+
+        startTimerButton.textContent =
+            "Start Focus";
+
+    }
 
 }
 
 
-function finishSession() {
+function finishPomodoro() {
 
     clearInterval(
         timerInterval
     );
 
+
     timerRunning = false;
 
-    focusMinutes += 25;
 
-    sessions++;
+    if (
+        currentMode === "focus"
+    ) {
 
+        focusMinutes += 25;
 
-    saveData();
-
-    document.getElementById(
-        "sessionCount"
-    ).textContent = sessions;
+        sessions++;
 
 
-    alert(
-        "Focus session complete! 🎯"
-    );
+        saveData();
+
+
+        setText(
+            "sessionCount",
+            sessions
+        );
+
+
+        alert(
+            "Pomodoro complete! 🎯\nTime for a break."
+        );
+
+    }
 
 
     resetTimer();
+
 
     renderAll();
 
 }
 
 
-/* TIMER MODES */
+if (startTimerButton) {
+
+    startTimerButton.addEventListener(
+        "click",
+        startTimer
+    );
+
+}
+
+
+if (resetTimerButton) {
+
+    resetTimerButton.addEventListener(
+        "click",
+        resetTimer
+    );
+
+}
+
+
+/* =========================================
+   POMODORO MODES
+========================================= */
 
 document
     .querySelectorAll(".mode")
@@ -875,8 +1442,8 @@ document
                 document
                     .querySelectorAll(".mode")
                     .forEach(
-                        b =>
-                            b.classList.remove(
+                        mode =>
+                            mode.classList.remove(
                                 "active"
                             )
                     );
@@ -887,10 +1454,39 @@ document
                 );
 
 
-                timerSeconds =
+                const minutes =
                     Number(
                         button.dataset.minutes
-                    ) * 60;
+                    );
+
+
+                timerSeconds =
+                    minutes * 60;
+
+
+                currentMode =
+                    minutes === 25
+                        ? "focus"
+                        : minutes === 5
+                            ? "short"
+                            : "long";
+
+
+                clearInterval(
+                    timerInterval
+                );
+
+
+                timerRunning =
+                    false;
+
+
+                if (startTimerButton) {
+
+                    startTimerButton.textContent =
+                        "Start";
+
+                }
 
 
                 updateTimerDisplay();
@@ -907,37 +1503,43 @@ document
 
 function renderAnalytics() {
 
-    const high =
+    const completed =
         tasks.filter(
-            t => t.priority === "high"
+            task =>
+                task.completed
         ).length;
 
 
-    const medium =
-        tasks.filter(
-            t => t.priority === "medium"
-        ).length;
+    const total =
+        tasks.length;
 
 
-    const low =
-        tasks.filter(
-            t => t.priority === "low"
-        ).length;
+    const completionRate =
+        total === 0
+            ? 0
+            : Math.round(
+                completed /
+                total *
+                100
+            );
 
 
-    document.getElementById(
-        "highTasks"
-    ).textContent = high;
+    setText(
+        "analyticsCompleted",
+        completed
+    );
 
 
-    document.getElementById(
-        "mediumTasks"
-    ).textContent = medium;
+    setText(
+        "analyticsTotal",
+        total
+    );
 
 
-    document.getElementById(
-        "lowTasks"
-    ).textContent = low;
+    setText(
+        "analyticsCompletion",
+        completionRate + "%"
+    );
 
 
     renderChart();
@@ -951,6 +1553,9 @@ function renderChart() {
         document.getElementById(
             "weeklyChart"
         );
+
+
+    if (!chart) return;
 
 
     chart.innerHTML = "";
@@ -980,7 +1585,8 @@ function renderChart() {
         const completed =
             tasks.filter(
                 task =>
-                    task.date === dateString &&
+                    task.date ===
+                        dateString &&
                     task.completed
             ).length;
 
@@ -1007,6 +1613,7 @@ function renderChart() {
 
 
         bar.innerHTML = `
+
             <span>
                 ${date.toLocaleDateString(
                     undefined,
@@ -1015,6 +1622,7 @@ function renderChart() {
                     }
                 )}
             </span>
+
         `;
 
 
@@ -1058,7 +1666,8 @@ function calculateStreak() {
         const completed =
             tasks.some(
                 task =>
-                    task.date === dateString &&
+                    task.date ===
+                        dateString &&
                     task.completed
             );
 
@@ -1093,7 +1702,7 @@ const themeButton =
 
 if (
     localStorage.getItem(
-        "focusforge_theme"
+        "focusfocus_theme"
     ) === "dark"
 ) {
 
@@ -1104,26 +1713,30 @@ if (
 }
 
 
-themeButton.addEventListener(
-    "click",
-    () => {
+if (themeButton) {
 
-        document.body.classList.toggle(
-            "dark"
-        );
+    themeButton.addEventListener(
+        "click",
+        () => {
 
-
-        localStorage.setItem(
-            "focusforge_theme",
-            document.body.classList.contains(
+            document.body.classList.toggle(
                 "dark"
-            )
-                ? "dark"
-                : "light"
-        );
+            );
 
-    }
-);
+
+            localStorage.setItem(
+                "focusfocus_theme",
+                document.body.classList.contains(
+                    "dark"
+                )
+                    ? "dark"
+                    : "light"
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================
@@ -1138,10 +1751,34 @@ function escapeHTML(text) {
         );
 
 
-    div.textContent = text;
+    div.textContent =
+        text;
 
 
     return div.innerHTML;
+
+}
+
+
+/* =========================================
+   UTILITY
+========================================= */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
 
 }
 
@@ -1154,13 +1791,19 @@ function renderAll() {
 
     renderDashboard();
 
-    renderKanban();
+    renderTaskPage();
+
+    renderCategoryBoxes();
+
+    renderEisenhower();
 
     renderAnalytics();
 
-    document.getElementById(
-        "sessionCount"
-    ).textContent = sessions;
+
+    setText(
+        "sessionCount",
+        sessions
+    );
 
 }
 
