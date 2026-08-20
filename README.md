@@ -3,7 +3,7 @@
 Focus Focus is a productivity suite with:
 
 - 📝 To-do lists
-- 🔥 Task prioritization and sorting
+- 🔥 Task prioritization with EisenHower method and sorting
 - ⏱️ Pomodoro timer
 - 📊 Analytics page
 
