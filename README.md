@@ -1,14 +1,16 @@
 # Focus Focus
+ 
+ 
+ Focus Focus is a simple and easy to use Productivity OS
+ It has the following features:
+  1. TODO List
+  2. Pomodoro Timer
+  3. Eisenhower method in the TODO List
+  4. Catergory based sorting
+  5. Easy to use interface
 
-Focus Focus is a productivity suite with:
+## The CODE stuff
 
-- 📝 To-do lists
-- 🔥 Task prioritization with EisenHower method and sorting
-- ⏱️ Pomodoro timer
-- 📊 Analytics page
-
-## Data Storage
-
-Focus Focus currently uses **LocalStorage (browser storage)** to save tasks, focus time, sessions, and settings.
-
-Future updates will introduce a **JSON-based storage system** to permanently store tasks and other data locally on your device.
+   it uses HTML(built by me), css ( built with help of ai, a lot of help), and javascript (just for bug fixing, no generating the code)
+   CSS needed lot of help as i started learning all of this electronics and web design 2 years ago and i am still leanring HTML and CSS.
+   
