@@ -11,6 +11,6 @@
 
 ## The CODE stuff
 
-   it uses HTML(built by me), css ( built with help of ai, a lot of help), and javascript (just for bug fixing, no generating the code)
+   it uses HTML(built by me), css ( built with help of ai, this time a little bit, not that much, i rewrote it myself), and javascript (just for bug fixing, no generating the code)
    CSS needed lot of help as i started learning all of this electronics and web design 2 years ago and i am still leanring HTML and CSS.
    
