@@ -9,7 +9,8 @@
   4. Catergory based sorting
   5. Easy to use interface
 
-**The CODE stuff
+## The CODE stuff
+
    it uses HTML(built by me), css ( built with help of ai, a lot of help), and javascript (just for bug fixing, no generating the code)
    CSS needed lot of help as i started learning all of this electronics and web design 2 years ago and i am still leanring HTML and CSS.
    
