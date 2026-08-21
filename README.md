@@ -1,4 +1,6 @@
-*Focus Focus
+#Focus Focus
+ 
+ 
  Focus Focus is a simple and easy to use Productivity OS
  It has the following features:
   1. TODO List
